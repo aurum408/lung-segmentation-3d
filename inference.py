@@ -33,8 +33,8 @@ img_size = 128
 if __name__ == '__main__':
 
 
-    seria_fpath = "Demo/test_lidc_idri/my_shape.npy"
-    save_fpath = "Demo/test_lidc_idri/my_shape_mask.npy"
+    seria_fpath = "Demo/test_lidc_idri/ones_spacing.npy"
+    save_fpath = "Demo/test_lidc_idri/ones_spacing_mask.npy"
     # Load test data
     X = np.load(seria_fpath)
     xx = X
