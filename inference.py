@@ -33,12 +33,14 @@ img_size = 128
 if __name__ == '__main__':
 
 
-    seria_fpath = "/hdd1/lung-segmentation-3d/Demo/test_lidc_idri/my_shape.npy"
-    save_fpath = "/hdd1/lung-segmentation-3d/Demo/test_lidc_idri/my_shape_mask.npy"
+    seria_fpath = "Demo/test_lidc_idri/my_shape.npy"
+    save_fpath = "Demo/test_lidc_idri/my_shape_mask.npy"
     # Load test data
     X = np.load(seria_fpath)
-    X = [X[:,:,i] for i in X.shape[0]]
+    xx = X
+    X = [X[i,:,:] for i in range(X.shape[0])]
     X = np.stack(X, axis=-1)
+    X = np.expand_dims(X, axis=-1)
     X = np.expand_dims(X, axis=0)
 
     n_test = X.shape[0]
