@@ -32,18 +32,18 @@ def loadDataGeneral(df, path, append_coord):
         n = X.shape[0]
         inpShape = X.shape[1:]
         xx = np.empty(inpShape)
-        for i in xrange(inpShape[1]):
+        for i in range(inpShape[1]):
             xx[:, i, :, 0] = i
         yy = np.empty(inpShape)
-        for i in xrange(inpShape[0]):
+        for i in range(inpShape[0]):
             yy[i, :, :, 0] = i
         zz = np.empty(inpShape)
-        for i in xrange(inpShape[2]):
+        for i in range(inpShape[2]):
             zz[:, :, i, 0] = i
         X = np.concatenate([X, np.array([xx] * n), np.array([yy] * n), np.array([zz] * n)], -1)
 
-    print '### Dataset loaded'
-    print '\t{}'.format(path)
-    print '\t{}\t{}'.format(X.shape, y.shape)
-    print '\tX:{:.1f}-{:.1f}\ty:{:.1f}-{:.1f}\n'.format(X.min(), X.max(), y.min(), y.max())
+    print ('### Dataset loaded')
+    print ('\t{}'.format(path))
+    print ('\t{}\t{}'.format(X.shape, y.shape))
+    print ('\tX:{:.1f}-{:.1f}\ty:{:.1f}-{:.1f}\n'.format(X.min(), X.max(), y.min(), y.max()))
     return X, y
