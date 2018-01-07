@@ -41,7 +41,6 @@ if __name__ == '__main__':
     X = [X[i,:,:] for i in range(X.shape[0])]
     X = np.stack(X, axis=-1)
     X = np.expand_dims(X, axis=-1)
-    X = np.expand_dims(X, axis=0)
 
     n_test = X.shape[0]
     inpShape = X.shape[1:]
