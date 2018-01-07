@@ -1,5 +1,3 @@
-from load_data import loadDataGeneral
-
 import numpy as np
 import pandas as pd
 #import nibabel as nib
@@ -8,6 +6,8 @@ from keras.models import load_model
 from scipy.misc import imresize
 from skimage.color import hsv2rgb, rgb2hsv, gray2rgb
 from skimage import io, exposure
+from load_data import loadDataGeneral
+from build_model import build_model
 
 def IoU(y_true, y_pred):
     assert y_true.dtype == bool and y_pred.dtype == bool
@@ -47,10 +47,10 @@ if __name__ == '__main__':
     inpShape = X.shape[1:]
 
     # Load model
-    model_name = 'trained_model.hdf5' # Model should be trained with the same `append_coords`
-    model = load_model(model_name)
+    model = build_model(X.shape)
+    model.load_weights('trained_model_weights.h5')
 
-    # Predict on test data
+    #Predict on test data
     pred = model.predict(X, batch_size=1)[..., 1]
     np.save(save_fpath, pred)
 
